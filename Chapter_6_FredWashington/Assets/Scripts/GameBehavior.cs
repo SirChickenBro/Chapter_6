@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameBehavior : MonoBehaviour
 {
@@ -47,7 +49,13 @@ public class GameBehavior : MonoBehaviour
         }
     }
 
-
+    public void RestartScene()
+    {
+        // 3
+        SceneManager.LoadScene(0);
+        // 4
+        Time.timeScale = 1f;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
