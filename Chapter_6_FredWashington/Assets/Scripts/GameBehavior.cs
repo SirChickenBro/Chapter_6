@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameBehavior : MonoBehaviour
 {
+    public Button WinButton;
     private int _itemsCollected = 0;
     private int _playerHP = 10;
     public int MaxItems = 4;
@@ -24,6 +25,7 @@ public class GameBehavior : MonoBehaviour
             if (_itemsCollected >= MaxItems)
             {
                 ProgressText.text = "You've found all the items!";
+                WinButton.gameObject.SetActive(true);
             }
             else
             {
