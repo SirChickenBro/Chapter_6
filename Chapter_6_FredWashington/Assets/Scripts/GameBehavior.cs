@@ -2,9 +2,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using CustomExtensions;
 
-public class GameBehavior : MonoBehaviour
+public class GameBehavior : MonoBehaviour, IManager
 {
+    private string _state;
+    public string State
+    {
+        get { return _state; }
+        set { _state = value; }
+    }
     public void UpdateScene(string updatedText)
     {
         ProgressText.text = updatedText;
@@ -67,10 +74,7 @@ public class GameBehavior : MonoBehaviour
 
     public void RestartScene()
     {
-        // 3
-        SceneManager.LoadScene(0);
-        // 4
-        Time.timeScale = 1f;
+        Utilities.RestartLevel(0);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -78,6 +82,14 @@ public class GameBehavior : MonoBehaviour
     {
         ItemText.text += _itemsCollected;
         HealthText.text += _playerHP;
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        _state = "Game Manager initialized..";
+        _state.FancyDebug();
+        Debug.Log(_state);
     }
 
     // Update is called once per frame
